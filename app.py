@@ -11,4 +11,4 @@ app.register_blueprint(routes_authorization, url_prefix='/authorization')
 
 if __name__ == '__main__':
     load_dotenv()
-    app.run(debug=True, port='4000', host='0.0.0.0')
+    app.run(debug=False, port='4000', host='0.0.0.0')
