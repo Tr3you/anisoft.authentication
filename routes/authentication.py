@@ -20,10 +20,12 @@ def login():
             "expires_in": user['AuthenticationResult']['ExpiresIn'],
         }
         response = jsonify(login_data)
+        response.headers.add('Access-Control-Allow-Origin', '*')
         response.status_code = 200
         return response
     else:
         response  = jsonify({"message": user})
+        response.headers.add('Access-Control-Allow-Origin', '*')
         response.status_code = 200
         return response
 
@@ -33,10 +35,12 @@ def signup():
     result = AuthService.signup(data['email'], data['password'], data['name'], data['lastName'])
     if result.get('UserSub') != None:
         response  = jsonify({"result": "OK"})
+        response.headers.add('Access-Control-Allow-Origin', '*')
         response.status_code = 200
         return response
     else:
         response  = jsonify({"result": "NOK"})
+        response.headers.add('Access-Control-Allow-Origin', '*')
         response.status_code = 500
         return response
 
@@ -47,10 +51,12 @@ def confirm_sign_up():
 
     if result.get('ResponseMetadata') != None:
         response  = jsonify({"result": "OK"})
+        response.headers.add('Access-Control-Allow-Origin', '*')
         response.status_code = 200
         return response
     else:
         response  = jsonify({"result": "NOK"})
+        response.headers.add('Access-Control-Allow-Origin', '*')
         response.status_code = 500
         return response
 
@@ -61,10 +67,12 @@ def logout():
 
     if logout == {}:
         response  = jsonify({"result": "OK"})
+        response.headers.add('Access-Control-Allow-Origin', '*')
         response.status_code = 200
         return response
     else:
         response  = jsonify({"result": "NOK"})
+        response.headers.add('Access-Control-Allow-Origin', '*')
         response.status_code = 500
         return response
 
@@ -75,10 +83,12 @@ def exchange_code():
 
     if response.get('access_token'):
         response  = jsonify(response)
+        response.headers.add('Access-Control-Allow-Origin', '*')
         response.status_code = 200
         return response
     else:
         response  = jsonify({"result": "NOK"})
+        response.headers.add('Access-Control-Allow-Origin', '*')
         response.status_code = 500
         return response
 
