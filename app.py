@@ -1,10 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 from routes.authentication import routes_auth
 from routes.authorization import routes_authorization
 from dotenv import load_dotenv
 
 
 app = Flask(__name__)
+CORS(app)
 app.register_blueprint(routes_auth, url_prefix='/auth')
 app.register_blueprint(routes_authorization, url_prefix='/authorization')
 
